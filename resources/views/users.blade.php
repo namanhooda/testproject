@@ -96,14 +96,14 @@
 
     <script>
         $(document).ready(function () {
-            // Load roles
+           
             $.get('/api/roles', function (roles) {
                 roles.forEach(function (role) {
                     $('select[name="role_id"]').append(new Option(role.name, role.id));
                 });
             });
 
-            // Load users
+            
             function loadUsers() {
                 $.get('/api/users', function (users) {
                     $('#userTable tbody').empty();
@@ -122,9 +122,9 @@
                 });
             }
 
-            loadUsers(); // Initial load of users
+            loadUsers(); 
 
-            // Submit form
+            
             $('#userForm').on('submit', function (e) {
                 e.preventDefault();
                 var formData = new FormData(this);
@@ -137,8 +137,8 @@
                     processData: false,
                     success: function (user) {
                         alert('User created successfully!');
-                        loadUsers(); // Reload users
-                        $('#userForm')[0].reset(); // Reset form
+                        loadUsers(); 
+                        $('#userForm')[0].reset(); 
                     },
                     error: function (xhr) {
                         alert(JSON.stringify(xhr.responseJSON.errors));
